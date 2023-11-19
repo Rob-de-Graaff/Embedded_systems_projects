@@ -1,0 +1,32 @@
+Detecting whether a wire is powered without using sensors can be challenging, and it's important to prioritize safety. However, if you're looking for a simple way to detect whether a wire is carrying current using an Arduino, you can consider measuring the voltage drop across a resistor placed in series with the wire. Here's an example circuit and code:
+
+Circuit:
+1. Connect one end of a resistor (e.g., 10k ohms) to the wire you want to monitor.
+2. Connect the other end of the resistor to a known voltage reference (e.g., 5V from the Arduino).
+3. Connect the wire you want to monitor to a common ground.
+
+Code:
+
+```arduino
+const int analogPin = A0; // Analog input pin
+const float thresholdVoltage = 0.2; // Threshold voltage for wire detection (adjust as needed)
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  int rawValue = analogRead(analogPin); // Read raw ADC value
+  float voltage = (rawValue / 1023.0) * 5.0; // Calculate voltage
+
+  if (voltage > thresholdVoltage) {
+    Serial.println("Wire is powered.");
+  } else {
+    Serial.println("Wire is not powered.");
+  }
+
+  delay(1000); // Delay for a second
+}
+```
+
+In this example, the Arduino reads the voltage drop across the resistor and compares it to a threshold voltage. If the voltage is above the threshold, it assumes that the wire is powered. Keep in mind that this method has limitations and might not work well with very low currents or in noisy environments. Additionally, it's important to note that detecting whether a wire is powered without proper isolation and safety measures can be risky and should be done cautiously.

@@ -1,0 +1,59 @@
+#include <Button.h>
+
+#define BUTTON_A 0
+
+#define BUTTON_B 1
+
+#define BUTTON_X 2
+
+#define BUTTON_Y 3
+
+Button buttonA = Button(BUTTON_A);
+
+Button buttonB = Button(BUTTON_B);
+
+Button buttonX = Button(BUTTON_X);
+
+Button buttonY = Button(BUTTON_Y);
+
+void setup() {
+
+Serial.begin(115200);
+
+buttonA.setup();
+
+buttonB.setup();
+
+buttonX.setup();
+
+buttonY.setup();
+
+}
+
+void loop() {
+
+if (Serial.available()) {
+
+char c = Serial.read();
+
+if (c == 'a') {
+
+buttonA.press();
+
+} else if (c == 'b') {
+
+buttonB.press();
+
+} else if (c == 'x') {
+
+buttonX.press();
+
+} else if (c == 'y') {
+
+buttonY.press();
+
+}
+
+}
+
+}

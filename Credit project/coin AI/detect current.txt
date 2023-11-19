@@ -1,0 +1,42 @@
+Sure, here is the Arduino code to detect current on a wire without using sensors, with an if statement to check for current:
+
+```
+// Define the input pin
+const int inputPin = 2;
+
+// Define the resistor
+const int resistorValue = 1000;
+
+// Setup
+void setup() {
+  // Initialize the serial port
+  Serial.begin(9600);
+
+  // Set the input pin as an input
+  pinMode(inputPin, INPUT);
+}
+
+// Loop
+void loop() {
+  // Read the voltage across the resistor
+  int voltage = analogRead(inputPin);
+
+  // Calculate the current
+  float current = voltage * 1000 / resistorValue;
+
+  // Check if the current is greater than a certain threshold
+  if (current > 10) {
+    // If it is, print "Current is flowing"
+    Serial.println("Current is flowing");
+  } else {
+    // Otherwise, print "Current is not flowing"
+    Serial.println("Current is not flowing");
+  }
+}
+```
+
+This code is the same as the previous code, with the addition of an if statement. The if statement checks if the current is greater than a certain threshold. If it is, then the code prints "Current is flowing" to the serial port. Otherwise, the code prints "Current is not flowing" to the serial port.
+
+The threshold value can be adjusted to change the sensitivity of the current detection. A higher threshold value will make it less likely that the code will detect current, while a lower threshold value will make it more likely that the code will detect current.
+
+I hope this helps!

@@ -1,0 +1,35 @@
+Sure, here are the steps on how to connect a buck converter to an Arduino Pro Mini that is already powered by an external power source to detect if the buck converter is powered or not:
+
+1. Connect the input of the buck converter to a power source. The input voltage can be anything from 5V to 12V.
+2. Connect the ground of the buck converter to the ground of the Arduino Pro Mini.
+3. Connect a digital pin on the Arduino Pro Mini to the output of the buck converter.
+
+The following code can be used to detect if the buck converter is powered or not:
+
+```
+int powerPin = 7;
+
+void setup() {
+  pinMode(powerPin, INPUT);
+}
+
+void loop() {
+  if (digitalRead(powerPin) == HIGH) {
+    // The buck converter is powered.
+  } else {
+    // The buck converter is not powered.
+  }
+}
+```
+
+This code will read the value of the digital pin that is connected to the output of the buck converter. If the value is HIGH, then the buck converter is powered. If the value is LOW, then the buck converter is not powered.
+
+In this case, you do not need to connect the output of the buck converter to the RAW pin of the Arduino Pro Mini. The Arduino Pro Mini is already powered by an external power source, so the buck converter does not need to provide power to the Arduino Pro Mini.
+
+Here is a diagram of the connections:
+
+```
+buck converter ---(output)--- Arduino Pro Mini ---(digital pin)---
+```
+
+I hope this clarifies things! Let me know if you have any other questions.
